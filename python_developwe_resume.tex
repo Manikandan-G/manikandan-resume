@@ -1,0 +1,184 @@
+\documentclass[a4paper,10pt]{article}
+
+% Load necessary packages
+\usepackage{xcolor}         % For color management
+\usepackage{fontspec}       % For font management (requires XeLaTeX or LuaLaTeX)
+\usepackage{geometry}       % To manage page layout
+\usepackage{fancyhdr}       % For fancy headers
+\usepackage{hyperref}       % For hyperlink support
+\usepackage{csquotes}
+\usepackage[inline]{enumitem}
+\usepackage[nostruts]{titlesec}
+\usepackage{standalone}
+
+\usepackage[default, scale=0.95]{opensans}
+
+% SECTION FORMATTING 
+\titlespacing*{\section}{0em}{0.5em}{0em}
+\titleformat{\section}{\color{highlight} \scshape \raggedright \large}{}{0em}{}[\vspace{-0.75em}\hrulefill]
+
+% COLOR
+\definecolor{highlight}{RGB}{61, 90, 128}
+
+% % LINKS
+\hypersetup{colorlinks=true,urlcolor=highlight}
+
+% SUBSECTION FORMATTING
+\titlespacing*{\subsection}{0em}{0em}{0em}
+\titleformat{\subsection}{\bfseries}{}{0em}{}[]
+
+% Prevent hyphenation and word breaks
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Tighter spacing for itemize
+\setlist[itemize]{align=parleft, left=0pt, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
+
+% New environment with tighter spacing
+\newenvironment{zitemize}{
+  \begin{itemize} 
+    \itemsep 0pt 
+    \parskip 0pt 
+    \parsep 1pt
+    \topsep 0pt 
+    \partopsep 0pt
+    \sloppy
+}{
+  \end{itemize}
+  \vspace{0.5em} % Reducing space after itemize
+}
+
+% Page layout and margins
+\geometry{top=.25in, bottom=1in, left=.5in, right=.5in}
+
+% Define custom colors
+\definecolor{darkblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{darkgray}{rgb}{0.33, 0.33, 0.33}
+\definecolor{darkgreen}{rgb}{0.0, 0.39, 0.0}
+
+% Define fonts (for XeLaTeX or LuaLaTeX)
+% \setmainfont{Open Sans}[Contextuals={WordInitial,WordFinal}, scale=0.95]  % Body font (Sans-serif)
+% \newfontface\headingfont{Arial}[Contextuals={WordInitial,WordFinal}]   % For headings (Sans-serif)
+% \newfontface\namefont{Georgia}[Contextuals={WordInitial,WordFinal}]    % For Name (Serif)
+% \newfontface\jobtitlefont{Open Sans}[Contextuals={WordInitial,WordFinal}] % For job titles (Sans-serif)
+
+% Personal information
+\def\name{Manikandan Ganesan} 
+\def\phone{+1 (905) 244--2666}
+\def\city{Toronto, Canada}
+\def\email{manikandan781996@gmail.com}
+\def\LinkedIn{manikandanganesan78}
+\def\github{TimmyChan}
+\def\role{Software Engineer}
+
+% Custom Commands
+\newcommand{\skills}[1]{ {\bfseries #1}} % BOLD COMMAND
+\newcommand{\subtext}[1]{\textit{#1}\par\vspace{-.75em}} % SUBTEXT
+\renewcommand{\arraystretch}{1.2} %skills section
+\setlength{\tabcolsep}{0in}
+
+% Fancy header style
+\fancypagestyle{fancy}{%
+    \fancyhf{}
+
+    \lhead{\phone \\ % Phone    
+            \city \\ % City
+            \href{mailto:\email}{\email}} % Email
+
+    \chead{%
+        \centering {\Huge \skills \\ \name \vspace{.5em}} \\ % Feel free to adjust vspace to 0 
+        {\color{highlight} \Large{\role}}} % Role
+
+    \rhead{%
+        \href{https://www.linkedin.com/in/\LinkedIn}{linkedin.com/in/\LinkedIn} \\ % LinkedIn
+        \href{https://github.com/\github}{github.com/\github}} % GitHub
+
+    \renewcommand{\headrulewidth}{1pt} % 2pt header rule
+    \renewcommand{\headrule}{\hbox to\headwidth{%
+        \color{highlight}\leaders\hrule height \headrulewidth\hfill}} % Custom header rule
+}
+
+\pagestyle{fancy}  % Apply the fancy style
+
+% Adjust header heights
+\setlength{\headheight}{90pt}  % Adjust header height
+\setlength{\headsep}{5pt}      % Adjust distance between header and body
+
+\begin{document}
+\section*{Professional Summary}
+\textbf{Versatile Software and Research Engineer with 6+ Years of Industry Experience}
+\begin{zitemize}
+    \item \textbf{Professional Journey:} Progressed from Embedded Engineer to Research Engineer and Software Engineer, now contributing as a Research Assistant, demonstrating adaptability across hardware and software domain.
+    \item \textbf{Broad Technical Skills:} Proficient in Python, C, C++, HTML, JavaScript, and CSS, with hands-on experience in modern frameworks like React, Express.js, Flask, and Django. Enjoys turning ideas into reliable and impactful products.
+    \item \textbf{AI and ML Enthusiast:} Leveraging technology to solve challenges, such as predicting transformer life expectancy, creating generative AI animations, and developing RAG-enabled chatbots to enhance user experiences.
+    \item \textbf{Protocol Expertise:} Successfully implemented critical protocols such as OCPP and MQTT, ensuring robust and scalable communication in complex systems.
+    \item \textbf{Passion for Secure Solutions:} Currently pursuing a degree in Cybersecurity, with passion for building secure, scalable solutions that drive innovation and trust in technology.
+    \item \textbf{A Problem-Solver at Heart:} Motivated by curiosity and creativity, Passionate about solving challenging problems, collaborating with teams, and delivering solutions that drive innovation, efficiency, and impact.
+\end{zitemize}
+
+\section*{Skills}
+\begin{tabular}{p{10em} p{2em} p{40em}}
+    \skills{Languages}       &  & Python, C, C++, HTML, CSS, JavaScript, SQL                                                   \\
+    \skills{Frameworks}      &  & React.js, Django, Flask, Node.js, Tailwind CSS, Bootstrap, Express.js, FastAPI, electronJS   \\
+    \skills{Tools}           &  & AWS (S3, EC2, Lambda, Amplify, Dynamo DB), Docker, MongoDB, MySQL, Redis, JIRA, Github CI/CD \\
+    \skills{Specializations} &  & IoT (Raspberry Pi, Arduino, NRF Nodic), Mobile App Development (React Native), System Design
+    (Microservices, Serverless Architecture, Event-Driven Architecture), DSA, Testing (Pytest),
+    Machine Learning (TensorFlow, PyTorch, Scikit-learn, Hugging Face), LLM (OpenAI, LangChain), Wireframes, UI/UX Design, Git, \LaTeX, MarkDown.
+\end{tabular}
+
+\section{Technical Experience}
+\subsection*{Research Assistant \hfill Nov 2023 --- Present}
+\textit{Durham College, Artificial Intelligence Hub \hfill Toronto, Canada}
+\begin{zitemize}
+    \item \textbf{M-Body Data Validation:} Contributed to the M-Body project, an open-source, bilingual initiative aimed at advancing generative character animation technologies. Collaborated with researchers from four post-secondary applied research centers, including SIRT and CDRIN, to validate datasets and ensure alignment with industry and academic needs.
+    \item \textbf{Methodology and Architecture Survey:} Conducted comprehensive surveys of existing methodologies and machine learning architectures to identify optimal solutions for research objectives. Engaged with global researchers to integrate diverse perspectives and approaches.
+    \item \textbf{AI Platform Frontend Development:} Developed the frontend for Erthos' AI platform within a condensed timeframe, utilizing technologies such as Python, React.js, and Tailwind CSS. Ensured seamless integration with backend services and collaborated with design teams using Figma to deliver an intuitive user interface.
+\end{zitemize}
+\textbf{Technologies \& Tools:} Python, React.js, Tailwind CSS, Confluence, Bitbucket, Figma, Hugging Face, PyTorch, AWS Lambda, AWS Amplify, AWS EC2
+
+\vspace{6pt}
+\subsection*{Software Engineer \hfill Feb 2022 --- Aug 2023}
+\textit{Apar Innosys Pte. Ltd. \hfill Chennai, India}
+\begin{zitemize}
+    \item \textbf{Internal Jira Clone Development:} Built an internal Jira clone using React.js, Tailwind CSS, Node.js, and MongoDB, integrating features like task management, backlog tracking, Kanban charts, and ticket systems. Seamlessly integrated with internal systems to enhance operational efficiency and eliminate Jira subscription costs.
+    \item \textbf{Legacy System Modernization:} Debugged and modernized a legacy C\# WebForms application by introducing Node.js, Express.js, and microservices architecture. Improved scalability, maintainability, and added new client-requested features.
+    \item \textbf{Process Automation:} Automated the retrieval and processing of surveillance videos stored in S3 using a Python-based solution. Developed a system to handle client requests via Excel, retrieve specific video segments, and generate password-protected links for sharing. Reduced video processing timelines from one week to less than a day.
+\end{zitemize}
+\textbf{Technologies \& Tools:} React.js, Tailwind CSS, Node.js, MongoDB, Python, C\#, Express.js, Git/GitHub, System Design, Clean Code Principles
+
+\pagebreak
+\pagestyle{fancy}
+\fancyhf{}
+
+\vspace{6pt}
+\subsection*{Research Engineer \hfill Nov 2020 --- Jan 2022}
+\textit{Coovum Smart Systems and Services Pvt. Ltd. \hfill Chennai, India}
+\begin{zitemize}
+    \item \textbf{In-House Industry Gateway \& SaaS Platform Development:} Led the development of an in-house industry gateway and SaaS platform by collaborating with cross-functional teams and external vendors, ensuring timely delivery and adherence to project goals.
+    \item \textbf{Transformer Life Expectancy Prediction:} Developed a proof-of-concept for predicting transformer life expectancy by analyzing SCADA system data. Processed and visualized datasets using Pandas, Seaborn, and regression models in scikit-learn, enabling data-driven decision-making for government entities.
+    \item \textbf{EV Charging Station Local Controller Development:} Successfully implemented OCPP (Open Charge Point Protocol) in a certified EV charging station controller, collaborating with a power electronics manufacturing vendor to meet strict compliance and achieve government certification for production.
+    \item \textbf{HMI Development:} Designed and coded the Human-Machine Interface (HMI) using the Electron framework, integrating inter-process communication and controls between the local controller and power electronics systems.
+    \item \textbf{Technical Documentation \& Development Practices:} Authored comprehensive technical documentation, managed version control with Git/GitHub, and implemented test-driven development practices to ensure scalability, maintainability, and seamless collaboration across teams.
+\end{zitemize}
+\textbf{Technologies \& Tools:} Python, Node.js, Express.js, Flask, MQTT, WebSocket, OCPP, Electron, MySQL, SQLite, MongoDB, Pandas, Seaborn, Chart.js, Git/GitHub
+
+\vspace{6pt}
+\subsection*{Embedded Engineer \hfill Aug 2018 --- Oct 2020}
+\textit{Coovum Smart Systems and Services Pvt. Ltd. \hfill Chennai, India}
+\begin{zitemize}
+    \item \textbf{Bluetooth Solutions for Smart Gym Ecosystem:} Programmed Nordic NRF Bluetooth development boards to gather heart rate data from 20 smartwatches simultaneously, integrating this data into a smart gym ecosystem.
+    \item \textbf{GPS Data Transmission:} Developed a system to collect GPS data using embedded boards and transmit it to a server for processing, enabling seamless integration into the company’s SaaS platform.
+    \item \textbf{Industry Gateways Development:} Designed solutions using MQTT, I2C, and serial communication protocols to connect sensors and industrial systems. Processed vast datasets in the backend to enable automated decision-making and system control.
+    \item \textbf{Cross-Functional Collaboration:} Collaborated with frontend teams, backend developers, and client-side teams to gather requirements and deliver solutions that automated shop floor operations, improved efficiency, and reduced production downtime.
+    \item \textbf{Smart Gym Enhancement:} Integrated cadence sensors with Bluetooth-enabled gateways to feed data into a desktop application, powering a gamified cycling race feature. This feature increased user engagement and became a highlight of the gym, earning client accolades for driving customer growth.
+\end{zitemize}
+\textbf{Technologies \& Tools:} Python, Embedded C, MySQL, MQTT, WebSocket, NRF Nordic Bluetooth, I2C, Serial Communication
+
+\section{Education}
+%  {\setlength{\parindent}{0pt}
+%   \input{sections/education.tex}
+%  }
+\skills{Post-Graduation Certification in Cybersecurity}, \textit{Durham College} \hfill	April 2025\\
+\skills{Post-Graduation Certification in Artificial Intelligence Design and Implementation}, \textit{Durham College} \hfill	April 2024\\
+\skills{Bachelor of Engineering in Electrical, Electronics and Communications}, \textit{Anna University}	\hfill Aug 2018\\
+\end{document}

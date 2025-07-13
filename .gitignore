@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.Out
+*fdb_*
+*fls
+*.synctex*
